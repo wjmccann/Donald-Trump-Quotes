@@ -16,6 +16,9 @@ import android.view.animation.AnimationSet;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,12 +32,18 @@ public class MainActivity extends AppCompatActivity {
     public String q;
     public String s;
 
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         new GetQuote().execute();
+
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     public void refreshQuote(View view){
@@ -45,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(s));
         startActivity(i);
+    }
+
+    public void shareIt(View view){
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Trump Quotes");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, q);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
     private class GetQuote extends AsyncTask<Void, Void, Void> {
@@ -118,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
             quote.startAnimation(out);
-            
+
 
 
 

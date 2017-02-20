@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "632408593799",
+    "firebase_url": "https://donaldtrumpquotes-b9e29.firebaseio.com",
+    "project_id": "donaldtrumpquotes-b9e29",
+    "storage_bucket": "donaldtrumpquotes-b9e29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632408593799:android:bb6e054d9ff871c4",
+        "android_client_info": {
+          "package_name": "com.wjmccann.donaldtrumpquotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632408593799-ntq68kjlsjrj663e7mqjlkkciru0n842.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wjmccann.donaldtrumpquotes",
+            "certificate_hash": "ACCE36C2E75A030A397B2555DAC9593BEF4840B9"
+          }
+        },
+        {
+          "client_id": "632408593799-tfuue7lmsgsl5ssk9dvnsrs7rnirlebl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX6FdQxdDdp6hMpKgVQnieEy_ncdanmVs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632408593799-tfuue7lmsgsl5ssk9dvnsrs7rnirlebl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
