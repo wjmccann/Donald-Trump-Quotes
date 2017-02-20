@@ -10,6 +10,9 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
-            pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("Please wait...");
-            pDialog.setCancelable(false);
-            pDialog.show();
+            //pDialog = new ProgressDialog(MainActivity.this);
+            //pDialog.setMessage("Please wait...");
+            //pDialog.setCancelable(false);
+            //pDialog.show();
         }
 
         @Override
@@ -86,11 +89,36 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (pDialog.isShowing())
-                pDialog.dismiss();
+            //if (pDialog.isShowing())
+               // pDialog.dismiss();
 
-            TextView quote = (TextView)findViewById(R.id.quote);
-            quote.setText(q);
+            final Animation in = new AlphaAnimation(0.0f, 1.0f);
+            in.setDuration(500);
+
+            final Animation out = new AlphaAnimation(1.0f, 0.0f);
+            out.setDuration(500);
+
+            final TextView quote = (TextView)findViewById(R.id.quote);
+
+            out.setAnimationListener(new Animation.AnimationListener() {
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    quote.setText(q);
+                    quote.startAnimation(in);
+
+                }
+                @Override
+                public void onAnimationRepeat(Animation animation){
+
+                }
+                public void onAnimationStart(Animation animation){
+
+                }
+            });
+
+            quote.startAnimation(out);
+            
 
 
 
